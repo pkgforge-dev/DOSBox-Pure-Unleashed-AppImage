@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DOSBox Pure Unleashed
+Comment=DOSBox reimagined with a friendly interface ZIP loading and save states
+Exec=DOSBoxPure
+Icon=logo
+Terminal=false
+Type=Application
+Categories=Game;Emulator
+StartupWMClass=DOSBoxPure
