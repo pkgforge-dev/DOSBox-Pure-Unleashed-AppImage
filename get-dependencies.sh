@@ -6,7 +6,7 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-# pacman -Syu --noconfirm PACKAGESHERE
+pacman -Syu --noconfirm python
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
@@ -16,11 +16,20 @@ get-debloated-pkgs --add-common --prefer-nano
 #make-aur-package PACKAGENAME
 
 # If the application needs to be manually built that has to be done down here
+echo "Making nightly build of DOSBox Pure Unleashed..."
+echo "---------------------------------------------------------------"
+REPO="https://github.com/schellingb/dosbox-pure-unleashed"
+VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
+git clone "$REPO"
+echo "$VERSION" > ~/version
+git clone https://github.com/schellingb/dosbox-pure
+git clone https://github.com/schellingb/ZillaLib
 
-# if you also have to make nightly releases check for DEVEL_RELEASE = 1
-#
-# if [ "${DEVEL_RELEASE-}" = 1 ]; then
-# 	nightly build steps
-# else
-# 	regular build steps
-# fi
+mkdir -p ./AppDir/bin
+cd dosbox-pure-unleashed
+case "$ARCH" in # they use arm_64 for the binary
+	x86_64)  narch=x86_64;;
+	aarch64) narch=arm_64;;
+esac
+make linux-release ZL_VIDEO_OPENGL_CORE=1 -j$(nproc)
+mv -v Release-linux/DOSBoxPure_${narch} ../AppDir/bin/DOSBoxPure
