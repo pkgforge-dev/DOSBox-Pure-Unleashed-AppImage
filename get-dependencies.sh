@@ -27,9 +27,5 @@ git clone https://github.com/schellingb/ZillaLib
 
 mkdir -p ./AppDir/bin
 cd dosbox-pure-unleashed
-case "$ARCH" in # they use arm_64 for the binary
-	x86_64)  narch=x86_64;;
-	aarch64) narch=arm_64;;
-esac
-make linux-release ZL_VIDEO_OPENGL_CORE=1 -j$(nproc)
-mv -v Release-linux/DOSBoxPure_${narch} ../AppDir/bin/DOSBoxPure
+make linux-release ZL_VIDEO_OPENGL_CORE=1 -j"$(nproc)"
+mv -v ./Release-linux/DOSBoxPure_* ../AppDir/bin/DOSBoxPure
