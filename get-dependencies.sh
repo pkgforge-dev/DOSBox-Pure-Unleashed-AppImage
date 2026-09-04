@@ -23,5 +23,5 @@ git clone https://github.com/schellingb/ZillaLib
 
 mkdir -p ./AppDir/bin
 cd dosbox-pure-unleashed
-make linux-release ZL_VIDEO_OPENGL_CORE=1 -j"$(nproc)"
+make linux-release ZL_VIDEO_OPENGL_CORE=1 -j$(nproc)
 mv -v ./Release-linux/DOSBoxPure_* ../AppDir/bin/DOSBoxPure
