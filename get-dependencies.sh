@@ -16,7 +16,7 @@ echo "Building DOSBox Pure Unleashed..."
 echo "---------------------------------------------------------------"
 REPO="https://github.com/schellingb/dosbox-pure-unleashed"
 VERSION="$(git ls-remote "$REPO" HEAD | cut -c 1-9 | head -1)"
-git clone "$REPO"
+git clone --depth 1 "$REPO"
 echo "$VERSION" > ~/version
 git clone https://github.com/schellingb/dosbox-pure
 git clone https://github.com/schellingb/ZillaLib
