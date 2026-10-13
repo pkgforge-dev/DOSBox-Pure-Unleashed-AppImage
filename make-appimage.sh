@@ -7,7 +7,7 @@ export ARCH
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=https://raw.githubusercontent.com/schellingb/dosbox-pure-unleashed/refs/heads/main/images/logo.png
+export ICON=https://codeberg.org/schelling/dosbox-pure-unleashed/media/branch/main/images/logo.png
 export DEPLOY_OPENGL=1
 export DEPLOY_PULSE=1
 
